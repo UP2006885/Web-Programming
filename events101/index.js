@@ -54,3 +54,26 @@ function reportAttacher(){
     mr.addEventListener("mousemove", reportUpdater)
 }
 
+/**
+ * The input field `newid` is meant for the user to type an ID of an HTML element; 
+ * IDs cannot have spaces in them, so the field needs to report 
+ *      when the user has a space in there. 
+ *      Write a function `idValidationAttacher`
+ * 
+ *  that gives the `newid` input field an event handler that checks the value whenever it has changed
+ *      (use the `input` event). If the value contains any space, the event handler will add a class `invalid` to the `newid` input element, so that 
+ *      an error message shows.
+ */
+
+function validateID(e){
+    let str = e.target.value;
+    if(str.includes(" ")){
+        e.target.classList.add("invalid");
+    } else{
+        e.target.classList.remove("invalid");
+    }
+}
+function idValidationAttacher(){
+    let input = document.querySelector("#newid");
+    input.addEventListener("input", validateID);
+}
