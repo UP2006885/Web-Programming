@@ -105,27 +105,10 @@ function removeAll(selector){
 }
 
 function getUserData(){
-    // #speed, #student form input fields. The result should be an object like this: { name: 'john', speed: 30, student: true }.
-    let userData = ["username", "speed", "student",];
-    let userValues = [];
-    let x = {};
+    let x = {}
+    x.name = document.querySelector("#username").value;
+    x.speed = document.querySelector("#speed").valueAsNumber;
+    x.student = document.querySelector("#student").checked;
 
-    for(let i = 0; i < userData.length; i++){
-        if(userData[i] === "student"){
-            userValues[i] = document.querySelector(`#${userData[i]}`).checked;
-        }else if(userData[i] === "speed"){
-            userValues[i] = parseInt(document.querySelector(`#${userData[i]}`).getAttribute("value"));
-        }else{
-            userValues[i] = document.querySelector(`#${userData[i]}`).getAttribute("value");
-        }
-    }
-    // userData.forEach((userData, i) => x[userData] = userValues[i]); // Stores the arrays into a single object.
-    userData[0] = "name";
-    for(let i = 0; i < userData.length; i++){
-        x[userData[i]] = userValues[i];
-    }
-    console.log(x);
     return x;
-
-    
 }
