@@ -95,3 +95,13 @@ function rockPaperScissors(){
 }
 
 // rockPaperScissors();
+
+function guessANumber(){
+    const prompt = require("prompt-sync")({sigint: true});
+    const randomNumber = Math.floor(Math.random() * 10)+1;
+    const userGuess = Number(prompt("Enter your quess: "));
+
+    if (userGuess === randomNumber){ console.log("You Win, you quessed correctly");} else{ console.log("You lose, I guessed ", randomNumber);}
+}
+
+// guessANumber();
