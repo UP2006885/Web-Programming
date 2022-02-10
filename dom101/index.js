@@ -10,4 +10,25 @@
 
 'use strict';
 
+function replaceText(elem, str){
+    elem.textContent = str;
+}
+
+function addTextTo(elem, str){
+    elem.append(str);
+}
+
+function moreBears(){
+    const q = document.querySelector("#animals");
+    q.setAttribute("src","http://placebear.com/400/200");
+    q.setAttribute("alt","A bear.");
+    q.setAttribute("title","A BEAR!");
+
+}
+
+function setId(){
+    
+}
+
+
 // add your functions here
