@@ -1,0 +1,1 @@
+[Resource](https://portsoc.github.io/code-copy-examples/stage-2.html)
