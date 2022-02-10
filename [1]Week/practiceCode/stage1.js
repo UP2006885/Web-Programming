@@ -105,3 +105,22 @@ function guessANumber(){
 }
 
 // guessANumber();
+
+function agressiveGuessANumber(){
+    const prompt = require("prompt-sync")({sigint: true});
+    const randomNumber = Math.floor(Math.random() * 10)+1;
+    console.log("I have thought of an integer between 1 and 10.");
+    const guess = Number(prompt("Take a quess at what it is: "));
+
+    if(!Number.isInteger(guess)){
+        console.log("Please guess an Integer");
+    }else if (guess  > 10 || guess < 1){
+        console.log("Guess must be between 1 - 10");
+    } else if (guess === randomNumber) {
+        console.log("You guessed correctly.");
+    } else {
+        console.log("I was guessing ", randomNumber);
+    }
+}
+
+agressiveGuessANumber();
