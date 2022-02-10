@@ -26,8 +26,14 @@ function moreBears(){
 
 }
 
-function setId(){
-    
+function setId(elem, str){
+    elem.setAttribute("id", str);
+    return elem;
+}
+
+function setClass(elem, str){
+    elem.setAttribute("class", str);
+    return elem;
 }
 
 
