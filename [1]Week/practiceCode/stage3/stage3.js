@@ -159,3 +159,105 @@ function diceLoadedGraph(){
 
 // diceLoadedGraph();
 
+function drawTower(){
+    const prompt = require("prompt-sync")({sigint : true});
+    // [
+    //     {w: 2, ch: "w"},
+    //     {w: 4, ch: "o"},
+    //     {w: 6, ch: "r"},
+    //     {w: 8, ch: "d"},
+    // ]
+
+    function describeWordTower(word){
+        const retreval = [];
+        for(let i = 0; i < word.length; i++){
+            const character = word[i];
+            const layerSize = (i + 1) * 2;
+            const layerDescription = {
+                w: layerSize,
+                ch: character,
+            } 
+
+            retreval.push(layerDescription);
+        }
+        return retreval;
+    }
+
+    function createLayoutString(towerWidth, layerDescription){
+        const spaceCount = towerWidth - layerDescription.w;
+        const sidePadding = " ".repeat(spaceCount / 2);
+        const character = layerDescription.ch.repeat(layerDescription.w);
+        return sidePadding + character + sidePadding;
+    }
+
+    const width = 20;
+
+    const word = prompt("Please enter a word: ");
+    const towerDescription = describeWordTower(word);
+
+    for(const layer of towerDescription){
+        console.log(createLayoutString(width, layer));
+    }
+}
+
+// drawTower();
+
+function drawColouredTower(){
+    const prompt = require("prompt-sync")({sigint : true});
+    const colours = require("colors/safe");
+    function nthColour(n, string){
+        const colourFunctions = [
+            colours.red,
+            colours.green,
+            colours.yellow,
+            colours.blue,
+            colours.magenta,
+            colours.cyan,
+        ];
+
+        const selectedColourFunction = colourFunctions[n % colourFunctions.length];
+        return selectedColourFunction(string);
+    }
+
+    // [
+    //     {w: 2, ch: "w"},
+    //     {w: 4, ch: "o"},
+    //     {w: 6, ch: "r"},
+    //     {w: 8, ch: "d"},
+    // ]
+
+    function describeWordTower(word){
+        const retreval = [];
+        for(let i = 0; i < word.length; i++){
+            const character = word[i];
+            const layerSize = (i + 1) * 2;
+            const layerDescription = {
+                w: layerSize,
+                ch: character,
+            } 
+
+            retreval.push(layerDescription);
+        }
+        return retreval;
+    }
+
+    function createLayoutString(towerWidth, layerDescription){
+        const spaceCount = towerWidth - layerDescription.w;
+        const sidePadding = " ".repeat(spaceCount / 2);
+        const character = layerDescription.ch.repeat(layerDescription.w);
+        return sidePadding + character + sidePadding;
+    }
+
+    const width = 20;
+
+    const word = prompt("Please enter a word: ");
+    const towerDescription = describeWordTower(word);
+
+    for(let i = 0; i < towerDescription.length; i++){
+        const layer = towerDescription[i];
+        const layerString = createLayoutString(width, layer);
+        console.log(nthColour(i, layerString));
+    }
+}
+
+drawColouredTower();
