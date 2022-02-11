@@ -1,7 +1,15 @@
 /* Prints a sequence of numbers between two given arguments. */
-const first = Number(process.argv[2]);
-const second = Number(process.argv[3]);
-const increment = Number(process.argv[4])
+let first = 1, second = 10, increment = 1;
+// allows optional Argvs.
+if(process.argv.length >= 3){
+    first = Number(process.argv[2]);
+    if(process.argv.length >= 4){
+     second = Number(process.argv[3]);
+     if(process.argv.length >= 5){
+        increment = Number(process.argv[4]);
+     }
+    }
+}
 
 if (Number.isNaN(first) || Number.isNaN(second) || Number.isNaN(increment)) {
     console.log("Usage: node seq.js Number Number Increment");
