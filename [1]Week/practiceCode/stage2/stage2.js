@@ -155,4 +155,63 @@ function genRandomSentances(){
     console.log(response);
 }
 
-genRandomSentances();
+// genRandomSentances();
+
+function nickBook(){
+    const prompt = require('prompt-sync') ({sigint: true});
+    const count = [{name : "Harry", nick : "@HarryJS",}, {name : "James", nick : "@Jms2001",},];
+    let command;
+
+    do {
+        console.log();
+        command = prompt("(Type help for cmds) Enter Cmd: ");
+        if(command === "help"){
+            console.log("Available cmds:");
+            console.log("   help, shows cmds.");
+            console.log("   stop, exits program.");
+            console.log("   count, shows how many people are stored in array.");
+            console.log("   add, adds a new person to array.");
+            console.log("   nick, search by nickname.");
+            console.log("   name, search by name.");
+        }
+
+        if(command === "count"){console.log(`Stored people amt: ${count.length}`);}
+
+        if(command === "add"){
+            const name = prompt("Persons Name: ");
+            const nick = prompt("Persons Nickname: ");
+            
+            const newPerson = {};
+            newPerson.name = name;
+            newPerson.nick = nick;
+
+            // Add the new person to the end of array. 
+            count[count.length] = newPerson;
+            console.log(`Added ${name}, new records length: ${count.length}`); 
+        }
+
+        if(command === "nick"){
+            const nick = prompt("Please enter a nickanme: ");
+            for (const person of count){
+                if(person.nick.includes(nick)){
+                    console.log(`${person.nick} is the nickname for: ${person.name}`);
+                }
+            }
+
+        }
+
+        if(command === "name"){
+            const name = prompt("Please enter a name: ");
+            for (const person of count){
+                if(person.name.includes(name)){
+                    console.log(`${person.name} has the nickanme: ${person.nick}`);
+                }
+            }
+
+        }
+
+    } while (command !== "stop");
+
+}
+
+nickBook();
