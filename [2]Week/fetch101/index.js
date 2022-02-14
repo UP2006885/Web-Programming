@@ -30,5 +30,11 @@ async function showList(elem, url) {
 window.document.addEventListener('load', showList);
 
 async function startShowingMessage(elem, url) {
-  
+  const response = await fetch(url);
+  const responseText = await response.text();
+  elem.textContent = responseText;
 }
+
+// setInterval(startShowingMessage, 1000);
+
+// window.document.addEventListener('load', startShowingMessage);
