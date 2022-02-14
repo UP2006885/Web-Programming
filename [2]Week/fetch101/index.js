@@ -29,12 +29,34 @@ async function showList(elem, url) {
 
 window.document.addEventListener('load', showList);
 
-async function startShowingMessage(elem, url) {
+async function startShowingMessage(elem, url) { // IDK
   const response = await fetch(url);
   const responseText = await response.text();
   elem.textContent = responseText;
 }
 
-// setInterval(startShowingMessage, 1000);
+window.document.addEventListener('load', startShowingMessage);
 
-// window.document.addEventListener('load', startShowingMessage);
+async function handleError(elem, url) {
+  const response = await fetch(url);
+  if (response.ok) {
+    const responseText = await response.text();
+    elem.textContent = responseText;
+  } else {
+    elem.textContent = 'OH DEAR';
+  }
+}
+
+window.document.addEventListener('load', handleError);
+
+async function drawBox(canvas, url) {
+  const response = await fetch(url);
+  const cords = await response.text();
+  console.log(cords);
+  const can = canvas.getContext('2d');
+
+  can.fillRect(cords.x, cords.y, 10, 10);
+}
+// setInterval(drawBox, 1000);
+
+window.document.addEventListener('load', drawBox);
