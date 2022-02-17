@@ -30,9 +30,10 @@ async function showList(elem, url) {
 window.document.addEventListener('load', showList);
 
 async function startShowingMessage(elem, url) { // IDK
+  const element = elem;
   const response = await fetch(url);
   const responseText = await response.text();
-  elem.textContent = responseText;
+  element.textContent = responseText;
 }
 
 window.document.addEventListener('load', startShowingMessage);
