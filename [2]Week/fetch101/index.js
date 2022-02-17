@@ -29,11 +29,8 @@ async function showList(elem, url) {
 
 window.document.addEventListener('load', showList);
 
-async function startShowingMessage(elem, url) { // IDK
-  const element = elem;
-  const response = await fetch(url);
-  const responseText = await response.text();
-  element.textContent = responseText;
+function startShowingMessage(elem, url) {
+  setInterval(showMessage, 1000, elem, url);
 }
 
 window.document.addEventListener('load', startShowingMessage);
@@ -50,14 +47,18 @@ async function handleError(elem, url) {
 
 window.document.addEventListener('load', handleError);
 
-async function drawBox(canvas, url) {
+async function boxUpdate(canvas, url) {
   const response = await fetch(url);
   const cords = await response.text();
   console.log(cords);
   const can = canvas.getContext('2d');
-
   can.fillRect(cords.x, cords.y, 10, 10);
+  console.log(cords[0].x);
+  console.log(cords[0].y);
 }
-// setInterval(drawBox, 1000);
+
+function drawBox(canvas, url) {
+  setInterval(boxUpdate, 1000, canvas, url);
+}
 
 window.document.addEventListener('load', drawBox);
