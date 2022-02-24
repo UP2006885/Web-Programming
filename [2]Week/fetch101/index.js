@@ -49,12 +49,9 @@ window.document.addEventListener('load', handleError);
 
 async function boxUpdate(canvas, url) {
   const response = await fetch(url);
-  const cords = await response.text();
-  console.log(cords);
+  const cord = await response.json();
   const can = canvas.getContext('2d');
-  can.fillRect(cords.x, cords.y, 10, 10);
-  console.log(cords[0].x);
-  console.log(cords[0].y);
+  can.fillRect(cord.x, cord.y, 10, 10);
 }
 
 function drawBox(canvas, url) {
