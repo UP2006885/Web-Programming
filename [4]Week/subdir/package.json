@@ -1,0 +1,12 @@
+{
+  "name": "npm-example",
+  "version": "0.0.1",
+  "description": "NPM example of using NPM",
+  "author": "Harry J. Seymour",
+  "scripts": {
+    "start": "node test-prompt.js"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
